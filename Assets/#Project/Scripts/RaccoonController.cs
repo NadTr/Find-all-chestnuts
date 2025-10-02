@@ -4,6 +4,7 @@ using NUnit.Framework.Internal;
 using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -22,6 +23,7 @@ public class RaccoonController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private Collider2D coll;
+    private int score;
     void OnEnable()
     {
         actions.FindActionMap("Raccoon").Enable();
@@ -43,6 +45,7 @@ public class RaccoonController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         xAxis = actions.FindActionMap("Raccoon").FindAction("MoveX");
+        score = 0;
 
     }
     void Update()
@@ -51,13 +54,13 @@ public class RaccoonController : MonoBehaviour
         if (isJumping)
         {
             // changer cette partie et l'adapter à partir d'un ray casting pour arrêter l'animation du saut demanière plus fluide
-        
+
             Vector3 origin = transform.position + Vector3.down * 0.9f;
             Vector3 direction = Vector3.down * 2f;
             RaycastHit2D belowHit = Physics2D.Raycast(origin, direction, 1.5f);
             Debug.DrawRay(origin, direction, Color.magenta);
 
-            if (belowHit.collider != null) 
+            if (belowHit.collider != null)
             // if (rb.linearVelocityY < 0)
             {
                 isJumping = false;
@@ -100,5 +103,20 @@ public class RaccoonController : MonoBehaviour
         animator.SetBool("on crouch", false);
         isCrouching = false;
     }
+    public void CaughtAChestnut()
+    {
+        score += 1;
+    }
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     Debug.Log("one collision");       
+    //     if (other.CompareTag("Chestnut"))
+    //     {
+    //         CaughtAChestnut();
+    //         other.gameObject.SetActive(false);
+    //         // other.animator.SetBool("caught", true);
+    //         Debug.Log("one chestnut");       
+    //     }
+    // }
 
 }
