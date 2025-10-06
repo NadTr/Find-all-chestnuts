@@ -16,7 +16,7 @@ public class RaccoonController : MonoBehaviour
     [SerializeField] private InputActionAsset actions;
     private InputAction xAxis;
     [SerializeField] private float speed = 3f;
-    [SerializeField] private float jumpForce = 8f;
+    [SerializeField] private float jumpForce = 5f;
     private bool isJumping = false;
     private bool isCrouching = false;
     private SpriteRenderer spriteRenderer;
@@ -107,16 +107,17 @@ public class RaccoonController : MonoBehaviour
     {
         score += 1;
     }
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     Debug.Log("one collision");       
-    //     if (other.CompareTag("Chestnut"))
-    //     {
-    //         CaughtAChestnut();
-    //         other.gameObject.SetActive(false);
-    //         // other.animator.SetBool("caught", true);
-    //         Debug.Log("one chestnut");       
-    //     }
-    // }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("one collision");       
+        if (collision.CompareTag("Chestnut"))
+        {
+            CaughtAChestnut();
+            collision.gameObject.SetActive(false);
+            // collision.gameObject.animator.SetBool("caught", true);
+            Debug.Log("one chestnut");       
+        }
+    }
 
 }
