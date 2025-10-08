@@ -24,6 +24,7 @@ public class RaccoonController : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D coll;
     private int score;
+    float tmpSpeed = 0 ;
     void OnEnable()
     {
         actions.FindActionMap("Raccoon").Enable();
@@ -83,8 +84,9 @@ public class RaccoonController : MonoBehaviour
         spriteRenderer.flipX = xAxis.ReadValue<float>() < 0;
 
         if (isCrouching) return;
-
-        transform.Translate(xAxis.ReadValue<float>() * speed * Time.deltaTime, 0f, 0f);
+        Debug.Log(speed + tmpSpeed);
+        // transform.Translate(xAxis.ReadValue<float>() * (speed + tmpSpeed) * Time.deltaTime, 0f, 0f);
+        transform.position += Vector3.right * ((xAxis.ReadValue<float>() * speed) + tmpSpeed) * Time.deltaTime;
         animator.SetFloat("speed", Math.Abs(xAxis.ReadValue<float>()));
     }
     private void OnJump(InputAction.CallbackContext callbackContext)
@@ -110,13 +112,33 @@ public class RaccoonController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("one collision");       
         if (collision.CompareTag("Chestnut"))
         {
             CaughtAChestnut();
-            collision.gameObject.SetActive(false);
-            // collision.gameObject.animator.SetBool("caught", true);
-            Debug.Log("one chestnut");       
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Moving plateform"))
+        {
+            if (collision.GetComponentInParent<MovingPlatefromBehavior>() == null)
+            {
+                throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
+            }
+            tmpSpeed = collision.GetComponentInParent<MovingPlatefromBehavior>().GetSpeed();
+            Debug.Log("moving");
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Moving plateform"))
+        {
+             if (collision.GetComponentInParent<MovingPlatefromBehavior>() == null)
+            {
+                throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
+            }
+            tmpSpeed = 0;
+            Debug.Log("not moving");       
         }
     }
 

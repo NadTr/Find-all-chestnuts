@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ChestNutsManager : MonoBehaviour
 {
     // [SerializeField] private Animation youranimation;// = GetComponent<Animation> ();
+    [SerializeField] private float delay = 0.15f;
     private Animator animator;
     void Start()
     {
@@ -12,9 +14,13 @@ public class ChestNutsManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("chestnut anim");  
-            animator.SetBool("is caught", true);     
-            
+            StartCoroutine(ChestnutCaught(delay));
         }
+    }
+    private IEnumerator ChestnutCaught(float delay = 0f)
+    {
+        animator.SetBool("is caught", true);
+        yield return new WaitForSeconds(delay + 0.5f);
+        gameObject.SetActive(false);
     }
 }
