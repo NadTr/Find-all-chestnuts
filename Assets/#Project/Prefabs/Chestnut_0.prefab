@@ -174,3 +174,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
+  score: {fileID: 6077184223641531803, guid: 3e0ca9e75dd66a541a30cb65ce61b1a2, type: 3}

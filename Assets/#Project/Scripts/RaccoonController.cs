@@ -13,6 +13,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class RaccoonController : MonoBehaviour
 {
+    [SerializeField] private UIManager uI;
     [SerializeField] private InputActionAsset actions;
     private InputAction xAxis;
     [SerializeField] private float speed = 3f;
@@ -108,6 +109,7 @@ public class RaccoonController : MonoBehaviour
     public void CaughtAChestnut()
     {
         score += 1;
+        uI.IncreaseCounter();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
