@@ -108,7 +108,7 @@ public class RaccoonController : MonoBehaviour
     }
     public void CaughtAChestnut()
     {
-        score += 1;
+        score++;
         uI.IncreaseCounter();
     }
 

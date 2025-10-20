@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private int counter;
+    private int counter = 0;
     [SerializeField] private TMP_Text score;
 
     void Start()
     {
         counter = 0;
-        score.SetText($"Score : {counter}");
+        score.SetText($"Chestnuts : {counter}");
 
     }
 
