@@ -13,11 +13,12 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class RaccoonController : MonoBehaviour
 {
-    [SerializeField] private UIManager uI;
-    [SerializeField] private InputActionAsset actions;
+    GameManager gm;
+    private UIManager uI;
+    private InputActionAsset actions;
     private InputAction xAxis;
-    [SerializeField] private float speed = 3f;
-    [SerializeField] private float jumpForce = 5f;
+    private float speed = 3f;
+    private float jumpForce = 5f;
     private bool isJumping = false;
     private bool isCrouching = false;
     private SpriteRenderer spriteRenderer;
@@ -40,22 +41,25 @@ public class RaccoonController : MonoBehaviour
         actions.FindActionMap("Raccoon").FindAction("Crouch").performed -= OnCrouch;
         actions.FindActionMap("Raccoon").FindAction("Crouch").canceled -= OnStandUp;
     }
-    void Start()
+    public void Initialize(GameManager gm, InputActionAsset actions, float playerSpeed, float jumpForce)
     {
+        this.gm = gm;
+        this.actions = actions;
+        this.speed = playerSpeed;
+        this.jumpForce = jumpForce;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
         xAxis = actions.FindActionMap("Raccoon").FindAction("MoveX");
         score = 0;
-
     }
-    void Update()
+    public void Process()
     {
         MoveX();
         if (isJumping)
         {
-            // changer cette partie et l'adapter à partir d'un ray casting pour arrêter l'animation du saut demanière plus fluide
 
             Vector3 origin = transform.position + Vector3.down * 0.9f;
             Vector3 direction = Vector3.down * 2f;
@@ -109,7 +113,7 @@ public class RaccoonController : MonoBehaviour
     public void CaughtAChestnut()
     {
         score++;
-        uI.IncreaseCounter();
+        gm.IncreaseCounter();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

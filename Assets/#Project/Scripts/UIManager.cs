@@ -3,12 +3,19 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    private GameManager gm;
     private int counter = 0;
-    [SerializeField] private TMP_Text score;
+    private TMP_Text score;
 
-    void Start()
+     public void Initialize(GameManager gm)
     {
+        this.gm = gm;
         counter = 0;
+
+        if (this.transform.Find("TMPText").TryGetComponent<TMP_Text>(out TMP_Text TMPText))
+        {
+            this.score = TMPText; 
+        }
         score.SetText($"Chestnuts : {counter}");
 
     }

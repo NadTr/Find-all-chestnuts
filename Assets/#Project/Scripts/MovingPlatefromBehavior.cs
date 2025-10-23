@@ -1,11 +1,28 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingPlatefromBehavior : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private bool goRight = true;
-    void Update()
+    GameManager gm;
+    private float speed;
+    private bool goRight;
+    private List<MovingPlatefromBehavior> listOfPlatforms;
+
+    public void Initialize(GameManager gm, Transform[] positions, float speed)
+    {
+        this.gm = gm;
+        this.speed = speed;
+
+        goRight = true;
+        for (int i = 0; i < positions.Length; i++)
+        {
+            Instantiate(this.gameObject, positions[i].position, Quaternion.identity);
+            listOfPlatforms.Add(this);
+        }
+    }
+
+    public void Process()
     {
         Move();
 

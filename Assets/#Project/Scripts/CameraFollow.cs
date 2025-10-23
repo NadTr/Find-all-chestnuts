@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    private GameManager gm;
+    private Transform player;
 
-    // Update is called once per frame
-    void Update()
+    public void Initialize(GameManager gm, Transform player)
     {
-        // Vector3 pos = transform.position;
+        this.gm = gm;   
+        this.player = player;   
+    }
+    public void Process()
+    {
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y , - 10f);
     }
 }
