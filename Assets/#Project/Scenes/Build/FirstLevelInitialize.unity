@@ -128,17 +128,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
+      propertyPath: movingPlatforms
+      value: 
+      objectReference: {fileID: 7904912477431703450, guid: 6f747839290e23241806da2de3bca533, type: 3}
+    - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: movingPlatforms.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: 'movingPlatforms.Array.data[0]'
       value: 
-      objectReference: {fileID: 8669165444484919529, guid: 77ff4fe80c408df4fa04f4fcc64c37d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: 'movingPlatforms.Array.data[1]'
       value: 
-      objectReference: {fileID: 8669165444484919529, guid: 77ff4fe80c408df4fa04f4fcc64c37d4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: 'movingPlatforms.Array.data[2]'
       value: 

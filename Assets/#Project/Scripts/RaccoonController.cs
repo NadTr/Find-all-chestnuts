@@ -119,6 +119,7 @@ public class RaccoonController : MonoBehaviour
     {
         if (collision.CompareTag("Void"))
         {
+            gm.AddOneFall();
             Restart();
         }
         if (collision.CompareTag("Finish"))
@@ -134,24 +135,14 @@ public class RaccoonController : MonoBehaviour
     {
         if (collision.CompareTag("Moving plateform"))
         {
-            if (collision.GetComponentInParent<MovingPlateformBehavior>() == null)
-            {
-                throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
-            }
             tmpSpeed = collision.GetComponentInParent<MovingPlateformBehavior>().GetSpeed();
-            // Debug.Log("moving");
         }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Moving plateform"))
         {
-             if (collision.GetComponentInParent<MovingPlateformBehavior>() == null)
-            {
-                throw new System.ArgumentException("Prefab doesn't have a componenent that have implement MovingPlatefromBehavior");
-            }
             tmpSpeed = 0;
-            // Debug.Log("not moving");       
         }
     }
 
