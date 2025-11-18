@@ -25,7 +25,6 @@ public class RaccoonController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private Collider2D coll;
-    private int score;
     float tmpSpeed = 0 ;
     Vector3 startPos;
     void OnEnable()
@@ -56,7 +55,6 @@ public class RaccoonController : MonoBehaviour
         coll = GetComponent<Collider2D>();
         startPos = this.transform.position;
         xAxis = actions.FindActionMap("Raccoon").FindAction("MoveX");
-        score = 0;
     }
     public void Process()
     {
@@ -111,7 +109,6 @@ public class RaccoonController : MonoBehaviour
     }
     public void CaughtAChestnut()
     {
-        score++;
         gm.IncreaseCounter();
     }
 

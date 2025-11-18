@@ -3,20 +3,31 @@ using UnityEngine.InputSystem;
 
 public class GameInitializer : MonoBehaviour
 {
+    [Header("UI and Background")]
     [SerializeField] private GameManager gm;
     [SerializeField] private UIManager uI;
     [SerializeField] private CameraFollow cam;
     [SerializeField] private Grid platforms;
     [SerializeField] private GameObject background;
     // [SerializeField] private MovingPlatefromBehavior movingPlatforms;
+    [SerializeField] private GameObject prizes;
+
+    [Space]
+    [Header("Moving Platforms")]
     [SerializeField] private GameObject movingPlatforms;
     [SerializeField] private float movingPlatformSpeed = 2f;
-    [SerializeField] private GameObject prizes;
     // [SerializeField] private ChestNutsManager chestnut;
+    [Space]
+    [Header("Player")]
     [SerializeField] private RaccoonController player;
     [SerializeField] private InputActionAsset actions;
     [SerializeField] private float playerSpeed = 3f;
     [SerializeField] private float jumpForce = 5f;
+    [Space]
+    [Header("Audios")]
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource chestnutSound;
+
     void Start()
     {
         InstantiateObjects();
@@ -30,19 +41,18 @@ public class GameInitializer : MonoBehaviour
         cam = Instantiate(cam);
         background = Instantiate(background);
         platforms = Instantiate(platforms);
-        // movingPlatforms = Instantiate(movingPlatforms);
-        // for (int i = 0; i < movingPlatforms.transform.childCount; i++)
-        // {
-        //     Instantiate(movingPlatforms.transform.GetChild(i));
-        // }
+
         movingPlatforms = Instantiate(movingPlatforms);
         prizes = Instantiate(prizes);
         player = Instantiate(player);
+
+        music = Instantiate(music);
+        chestnutSound = Instantiate(chestnutSound);
         
     }
     private void InitializeObjects()
     {
-        gm.Initialize(cam, player, prizes, uI, background, movingPlatforms);
+        gm.Initialize(cam, player, prizes, uI, background, movingPlatforms, chestnutSound);
         uI.Initialize(gm);
         cam.Initialize(gm, player.transform);
 

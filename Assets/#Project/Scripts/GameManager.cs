@@ -11,10 +11,11 @@ public class GameManager : MonoBehaviour
     private GameObject movingPlatforms;
     private RaccoonController player;
     private GameObject prizes;
+    private AudioSource chestnutSound;
     private float gameTime;
     private int score;
     private int numberOfFalls;
-    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, UIManager uI, GameObject background, GameObject movingPlatforms)
+    public void Initialize(CameraFollow cam, RaccoonController player, GameObject prizes, UIManager uI, GameObject background, GameObject movingPlatforms, AudioSource chestnutSound)
     {
         this.uI = uI;   
         this.cam = cam;   
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
         this.prizes = prizes;   
         this.background = background;   
         this.movingPlatforms = movingPlatforms; 
+        this.chestnutSound = chestnutSound; 
 
         gameTime = 0;
         score = 0;
@@ -30,7 +32,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-        Debug.Log(gameTime);
 
         cam.Process();
         player.Process();
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
     public void IncreaseCounter()
     {
+        chestnutSound.Play();
         score++;
         uI.IncreaseCounter();
     }

@@ -128,6 +128,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 2155576044931943046, guid: 96897d094a33a0043b1c5245003b8445, type: 3}
+    - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
+      propertyPath: chestnutSound
+      value: 
+      objectReference: {fileID: 3213333397498091388, guid: 19a992237b8b65a49b576c209f1541c4, type: 3}
+    - target: {fileID: 2491565765088840179, guid: f735776fc77f9a647ae6cb96127bf601, type: 3}
       propertyPath: movingPlatforms
       value: 
       objectReference: {fileID: 7904912477431703450, guid: 6f747839290e23241806da2de3bca533, type: 3}
