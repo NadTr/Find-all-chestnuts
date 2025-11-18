@@ -3,20 +3,27 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    private int counter;
-    [SerializeField] private TMP_Text score;
+    private GameManager gm;
+    private int counter = 0;
+    private TMP_Text score;
 
-    void Start()
+     public void Initialize(GameManager gm)
     {
+        this.gm = gm;
         counter = 0;
-        score.SetText($"Score : {counter}");
+
+        if (this.transform.Find("TMPText").TryGetComponent<TMP_Text>(out TMP_Text TMPText))
+        {
+            this.score = TMPText; 
+        }
+        score.SetText($"Chestnuts : {counter}");
 
     }
 
     public void IncreaseCounter()
     {
         counter++;
-        Debug.Log($"increase counter = {counter}");
+        // Debug.Log($"increase counter = {counter}");
         score.SetText($"Chestnuts : {counter}");
     }
 }

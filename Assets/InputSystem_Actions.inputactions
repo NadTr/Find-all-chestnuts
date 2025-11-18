@@ -1125,6 +1125,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "1D Axis",
+                    "id": "2a5d2e03-f7fe-4b1a-ae33-881dfc75e430",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveX",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "8322af88-34fa-4fd8-ab1c-20dfabebf9d4",
+                    "path": "<HID::Core (Plus) Wired Controller>/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "MoveX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f3f9b34c-db9e-4ba3-8500-5a09d6dd8e23",
+                    "path": "<HID::Core (Plus) Wired Controller>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "MoveX",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "839570c7-28a1-4f19-9752-2ae1feff0da5",
                     "path": "<Keyboard>/space",
@@ -1150,6 +1183,17 @@
                     "name": "",
                     "id": "4ebfdf00-2726-4ebd-b6e1-5b465bff3447",
                     "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "70c80f5e-2c78-4b3a-b2f2-f4b653dd1a93",
+                    "path": "<HID::Core (Plus) Wired Controller>/button3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
