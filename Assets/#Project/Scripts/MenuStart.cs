@@ -6,6 +6,6 @@ public class MenuStart : MonoBehaviour
 {
     public void OnPlayButton ()
     {
-        SceneManager.LoadScene("FirstLevelInitialize");
+        SceneManager.LoadScene("FirstLevel");
     }
 }

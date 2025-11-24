@@ -17,7 +17,7 @@ public class MenuEnd : MonoBehaviour
     }
     public void OnPlayButton ()
     {
-        SceneManager.LoadScene("FirstLevelInitialize");
+        SceneManager.LoadScene("FirstLevel");
     }
     public void OnQuitButton ()
     {

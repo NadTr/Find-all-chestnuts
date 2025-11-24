@@ -89,10 +89,10 @@ public class RaccoonController : MonoBehaviour
     }
     private void OnJump(InputAction.CallbackContext callbackContext)
     {
+        if (numberOfJumps <= 0) return;
+
         animator.SetBool("on jump", true);
         isJumping = true;
-
-        if (numberOfJumps <= 0) return;
 
         if (numberOfJumps > 1) rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
         if (numberOfJumps <= 1) rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
@@ -141,6 +141,10 @@ public class RaccoonController : MonoBehaviour
         if (collision.CompareTag("Chestnut"))
         {
             CaughtAChestnut();
+        }
+        if (collision.CompareTag("Respawn"))
+        {
+            startPos = this.transform.position;
         }
     }
     void OnTriggerStay2D(Collider2D collision)
