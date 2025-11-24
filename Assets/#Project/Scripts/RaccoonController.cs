@@ -1,7 +1,7 @@
 using System;
 // using System.Numerics;
 using NUnit.Framework.Internal;
-using UnityEditor.EditorTools;
+// using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
@@ -66,7 +66,7 @@ public class RaccoonController : MonoBehaviour
             Vector3 origin = transform.position + Vector3.down * 0.9f;
             Vector3 direction = Vector3.down * 2f;
             RaycastHit2D belowHit = Physics2D.Raycast(origin, direction, .5f);
-            Debug.DrawRay(origin, direction, Color.magenta);
+            // Debug.DrawRay(origin, direction, Color.magenta);
 
             if (belowHit.collider != null)
             // if (rb.linearVelocityY < 0)
